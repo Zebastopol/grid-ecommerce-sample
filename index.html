@@ -3,81 +3,93 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/styles.css"/>
     <title>Grid Ecommerce Sample</title>
 </head>
 <body>
-    <div class="grid-container">
-        <div class="header">Item 1</div>
-        <div class="menu">Item 2</div>
-        <div class="main">Item 3
-            <div class="card-container">
-                <div class="card">
-                    <img src="assets/imgs/hood1.jpg" alt="Product 1" >
-                    <h2>Product 1</h2>
-                    <p>Price: $10.00</p>
-                </div>
-                <div class="card">
-                    <img src="assets/imgs/tshirt1.jpg" alt="Product 2" >
-                    <h2>Product 2</h2>
-                    <p>Price: $15.00</p>
-                </div>
-                <div class="card">
-                    <img src="assets/imgs/tshirt2.webp" alt="Product 3" >
-                    <h2>Product 3</h2>
-                    <p>Price: $20.00</p>
-                </div>
-                <div class="card">
-                    <img src="assets/imgs/tshirt2.webp" alt="Product 3" >
-                    <h2>Product 3</h2>
-                    <p>Price: $20.00</p>
-                </div>
-                <div class="card">
-                    <img src="assets/imgs/tshirt2.webp" alt="Product 3" >
-                    <h2>Product 3</h2>
-                    <p>Price: $20.00</p>
-                </div>
-                <div class="card">
-                    <img src="assets/imgs/tshirt2.webp" alt="Product 3" >
-                    <h2>Product 3</h2>
-                    <p>Price: $20.00</p>
-                </div>
-                <div class="card">
-                    <img src="assets/imgs/tshirt2.webp" alt="Product 3" >
-                    <h2>Product 3</h2>
-                    <p>Price: $20.00</p>
-                </div>
-                 <div class="card">
-                    <img src="assets/imgs/tshirt2.webp" alt="Product 3" >
-                    <h2>Product 3</h2>
-                    <p>Price: $20.00</p>
-                </div> <div class="card">
-                    <img src="assets/imgs/tshirt2.webp" alt="Product 3" >
-                    <h2>Product 3</h2>
-                    <p>Price: $20.00</p>
-                </div> <div class="card">
-                    <img src="assets/imgs/tshirt2.webp" alt="Product 3" >
-                    <h2>Product 3</h2>
-                    <p>Price: $20.00</p>
-                </div> <div class="card">
-                    <img src="assets/imgs/tshirt2.webp" alt="Product 3" >
-                    <h2>Product 3</h2>
-                    <p>Price: $20.00</p>
-                </div> <div class="card">
-                    <img src="assets/imgs/tshirt2.webp" alt="Product 3" >
-                    <h2>Product 3</h2>
-                    <p>Price: $20.00</p>
-                </div> <div class="card">
-                    <img src="assets/imgs/tshirt2.webp" alt="Product 3" >
-                    <h2>Product 3</h2>
-                    <p>Price: $20.00</p>
-                </div> <div class="card">
-                    <img src="assets/imgs/tshirt2.webp" alt="Product 3" >
-                    <h2>Product 3</h2>
-                    <p>Price: $20.00</p>
-                </div>
-            </div>
-        </div>
-            <div class="footer">Item 4</div>
-</body>
-</html>
+  <div class="layout">
+    <!-- NAVBAR / HEADER -->
+    <header class="navbar">
+      <h1 class="navbar__title">Mi Ecommerce</h1>
+    </header>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" aria-label="categorías">
+      <h2 class="sidebar__title">Categorías</h2>
+      <nav class="sidebar__nav">
+        <a class="sidebar__link" href="#">Perfumes <span class="count">(13)</span></a>
+        <a class="sidebar__link" href="#">Ropa <span class="count">(21)</span></a>
+        <a class="sidebar__link" href="#">Accesorios <span class="count">(41)</span></a>
+        <a class="sidebar__link" href="#">Zapatos <span class="count">(10)</span></a>
+      </nav>
+    </aside>
+
+    <!-- MAIN / PRODUCT GRID -->
+    <main class="main" id="productos">
+      <section class="product-grid" aria-label="grilla de productos">
+        <!-- Tarjetas de producto -->
+
+        <article class="card">
+          <div class="card__media">
+            <img src="https://http2.mlstatic.com/D_NQ_NP_967299-MLA84513342918_052025-O.webp" alt="Perfume myKingdom" loading="lazy"/>
+          </div>
+          <div class="card__body">
+            <h3 class="card__title">Perfume myKingdom</h3>
+            <div class="price">76.800</div>
+          </div>
+          <div class="card__footer">
+            <button class="btn btn--primary">Comprar</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card__media">
+            <img src="https://cdn.valmara.co/54692-large_default/perfume-para-hombre-phantom-de-paco-rabanne-150-ml-edt.webp" alt="Perfume Phantom" loading="lazy"/>
+          </div>
+          <div class="card__body">
+            <h3 class="card__title">Perfume Phantom</h3>
+            <div class="price">78.700</div>
+          </div>
+          <div class="card__footer">
+            <button class="btn btn--primary">Comprar</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card__media">
+            <img src="https://m.media-amazon.com/images/I/31wzWgIGr1L._AC_SY1000_.jpg" alt="Zapatos Docker" loading="lazy"/>
+          </div>
+          <div class="card__body">
+            <h3 class="card__title">Zapatos Docker</h3>
+            <div class="price">84.900</div>
+          </div>
+          <div class="card__footer">
+            <button class="btn btn--primary">Comprar</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card__media">
+            <img src="https://home.ripley.com.pe/Attachment/WOP_5/2020274674309/2020274674309_2.jpg" alt="Poleron puma" loading="lazy"/>
+          </div>
+          <div class="card__body">
+            <h3 class="card__title">Poleron puma</h3>
+            <div class="price">43.200</div>
+          </div>
+          <div class="card__footer">
+            <button class="btn btn--primary">Comprar</button>
+          </div>
+        </article>
+
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <p>@miecommerce</p>
+    </footer>
+  </div>
+</body></html>

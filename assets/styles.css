@@ -1,65 +1,235 @@
-* {
-    box-sizing: border-box;
+/* ==============================
+   Reset + tokens de diseño */
+:root{
+  --bg:#f0f1f3;
+  --surface:#f0f1f3;
+  --text:#1e1f23;
+  --muted:#6b7280;
+  --border:#d9dce1;
+  --shadow: 0 1px 2px rgba(0,0,0,.04), 0 8px 24px rgba(0,0,0,.06);
+  --brand:#173a59; /* azul oscuro del mockup */
+  --brand-700:#0f2a41;
+  --radius:12px;
+}
+ /* Oculta la barra de scroll en Firefox sin perder la funcionalidad */ 
+ * {     scrollbar-width: none; }     
+ /* Oculta la barra de scroll en navegadores Webkit */ 
+ ::-webkit-scrollbar {     display: none; }
+   /* Resetea estilos por defecto */
+*{  
+  margin:0;
+  padding:0;
+  box-sizing:border-box; 
+}
+html { height:100%; }
+body{
+  font-family:'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color:var(--text);
+  background:var(--bg);
+  min-height:100%;
+  /*line-height:1.45;*/
+  width: 100%;
+
 }
 
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #0a0a0a;
+/* ==============================
+   GRID de página (bidemensional)
+   ============================== */
+.layout{
+  display:grid;
+  grid-template-columns: 240px 1fr;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas:
+    "navbar navbar"
+    "sidebar main"
+    "footer footer";
+  min-height:100vh;
+  /*gap: 16px;*/
+  /*padding: 10px 16px 16px;*/
+  width: 100%;
+
 }
 
-.grid-container {
-    display: grid;
+/* ==============================
+   NAVBAR (barra superior, título centrado)
+   ============================== */
+.navbar{
+  grid-area:navbar;
+  background:var(--brand);
+  color:#fff;
+  /*border-radius: 8px;*/
+  padding: 8px 12px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  /*box-shadow: var(--shadow);*/
+  /*border:1px solid rgba(255,255,255,.06);*/
+}
+.navbar__title{
+  margin:0;
+  font-size: 16px;
+  font-weight:600;
+}
+
+/* ==============================
+   SIDEBAR (Flex vertical, emulando mock)
+   ============================== */
+.sidebar{
+  grid-area:sidebar;
+  background:var(--surface);
+  /*border: 0px solid var(--border);*/
+  /*border-radius: 8px;*/
+  box-shadow: var(--shadow);
+  padding: 12px;
+  display:flex;
+  flex-direction:column;
+  gap: 12px;
+}
+.sidebar__title{
+  margin: 0 0 8px 0;
+  font-size: 14px;
+  font-weight: 700;
+  color:#2b2f37;
+}
+.sidebar__nav{
+  display:flex;
+  flex-direction:column;
+  gap:0px;
+}
+.sidebar__link{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  text-decoration:none;
+  color:#2b2f37;
+  font-size:14px;
+  padding:6px 8px;
+  border-radius:6px;
+}
+.sidebar__link:hover{
+  background:#f6f7f9;
+}
+.count{ color: var(--muted); }
+
+/* ==============================
+   MAIN
+   ============================== */
+.main{
+  grid-area:main;
+  background: var(--surface);
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  padding: 12px 10px 12px 10px;
+}
+
+/* ==============================
+   GRILLA de productos (3 columnas)
+   ============================== */
+.product-grid{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  min-height: 100vh;
+}
+/* ==============================
+   MEDIA QUERIES ADAPTABLES DE PANTALLA
+   ============================== */
+@media (max-width: 1100px){
+  .product-grid{ grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 700px){
+  .layout{
+    grid-template-columns: 1fr;
     grid-template-areas:
-        "header header"
-        "menu main"
-        "footer footer";
-    grid-template-columns: 1fr 8fr;
-    grid-template-rows: 10% 85% 5%;
-    height:auto;
-    width: auto;
+      "navbar"
+      "sidebar"
+      "main"
+      "footer";
+  }
+  .product-grid{ grid-template-columns: 1fr; }
 }
 
-.header {
-    grid-area: header;
-    background-color: #081aba;
-    padding: 20px;
-    text-align: center;
-    height: 100px;
+/* ==============================
+   TARJETA de producto (Flex interno)
+   ============================== */
+.card{
+  background: #fff;
+  box-shadow: var(--shadow);
+  display:flex;
+  flex-direction:column;
+  overflow:hidden;
+
+}
+.card__media{
+  background:#fff;
+  aspect-ratio: 4 / 3;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.card__media img{
+  margin: 0; max-width:100%; max-height:100%; object-fit:contain; display:block;   background: #fff;
+
+}
+.card__body{
+  padding: 0px;
+  background: #fff;
+  display:flex;
+  flex-direction:column;
+  justify-content: center;
+  align-items: center;
+
+}
+.card__title{
+  font-size: 25px;
+  font-weight:600;
+  object-fit: fill;
+  margin-top: 15px
+}
+.price{ 
+  padding :0 12px 0px 12px;
+  font-weight:100;
+  color: #2b2f37;
+  flex: display;
+  align-items: flex-end;
+ }
+.card__footer {
+  margin-top:auto;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  background: var(--brand);
+  color:#fff;
+  padding:10px 12px;
+  cursor: pointer;
 }
 
-.menu {
-    grid-area: menu;
-    background-color: #f7f7fb;
-    padding: 20px;
-}
 
-.main {
-    grid-area: main;
-    background-color: #555551;
-    padding: 20px;
+.btn{
+  appearance:none;
+  border:0;
+  background:var(--brand);
+  color: #fff;
+  font-weight:700;
+  border-radius:0%;
+  margin: 0%;
+  cursor:pointer;
 }
-.card-container {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-}
-.card img {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    object-fit: contain;
-    width: 150px;
-    height: 150px;
-    object-fit: cover;
-    padding: 10px;
-}
-.footer {
-    grid-area: footer;
-    background-color: #fbf8f8;
-    text-align: center;
-    width: auto;
-    height: 100%;
+.btn--primary:hover{ filter: brightness(0.95); }
 
+/* ==============================
+   FOOTER
+   ============================== */
+.footer{
+  grid-area:footer;
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  text-align:center;
+  color: var(--muted);
+  padding: 10px;
+  font-size: 12px;
 }
